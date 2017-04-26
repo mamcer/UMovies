@@ -1,0 +1,13 @@
+﻿@model IEnumerable<UMovies.Web.Models.MovieViewModel>
+
+@{
+    ViewBag.Title = "All";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>All</h2>
+
+@foreach (var movie in Model)
+{
+    <a href="javascript:playMovie('@movie.FilePath')">@movie.Name</a><br />
+}

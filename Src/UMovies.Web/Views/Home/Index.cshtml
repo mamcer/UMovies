@@ -1,0 +1,30 @@
+﻿@model UMovies.Web.Models.IndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h1>UMovies</h1>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SearchText, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SearchText, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </div>
+
+        <p>Searching over @Model.MediaCount media files</p>
+    </div>
+}

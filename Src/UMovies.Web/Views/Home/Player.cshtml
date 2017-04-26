@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Player";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Player</h2>
+
+<input type="button" value="Play/Pause" onclick="playPause()" />
+<input type="button" value="Skip back" onclick="skipBack()" />
+<input type="button" value="Skip forward" onclick="skipForward()" />
+<input type="button" value="Play from the beginning" onclick="playFromBeginning()" />
+<input type="button" value="Close Player" onclick="closePlayer()" />
+
+@section scripts
+{
+    function playPause() {
+    hub.server.playPause();
+    }
+
+    function skipBack() {
+    hub.server.skipBack();
+    }
+
+    function skipForward() {
+    hub.server.skipForward();
+    }
+
+    function playFromBeginning() {
+    hub.server.playFromBeginning();
+    }
+
+    function closePlayer() {
+    hub.server.closePlayer();
+    }
+}
