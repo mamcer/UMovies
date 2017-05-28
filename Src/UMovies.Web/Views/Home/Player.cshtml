@@ -5,7 +5,7 @@
 
 <h2>Player</h2>
 
-<input type="button" value="Play/Pause" onclick="playPause()" />
+<input type="button" value="Play/Pause" onclick="playPause()" id="playPause" />
 <input type="button" value="Skip back" onclick="skipBack()" />
 <input type="button" value="Skip forward" onclick="skipForward()" />
 <input type="button" value="Play from the beginning" onclick="playFromBeginning()" />
@@ -13,6 +13,8 @@
 
 @section scripts
 {
+    document.getElementById("playPause").focus();
+
     function playPause() {
     hub.server.playPause();
     }

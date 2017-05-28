@@ -4,25 +4,26 @@
     ViewBag.Title = "Search";
 }
 
+<h2>Search</h2>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <br />
         <div class="form-group">
             <div class="col-md-10">
-                @Html.EditorFor(model => model.SearchText, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.SearchText, new { htmlAttributes = new { @class = "form-control", placeholder = "Search Title", id = "searchTextBox" } })
                 @Html.ValidationMessageFor(model => model.SearchText, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-10">
-                <input type="submit" value="Search" class="btn btn-primary" />
-            </div>
-        </div>
-        
+        @*<div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Search" class="btn btn-primary" />
+                </div>
+            </div>*@
+
         <p>Searching over @Model.MediaCount media files</p>
     </div>
 }
@@ -33,7 +34,11 @@
 
     foreach (var movie in Model.Movies)
     {
-        <a href="javascript:playMovie('@movie.FilePath')">@movie.Name</a>
-        <br />
+        <p><a href="javascript:playMovie('@movie.FilePath')">@movie.Name</a></p>
     }
+}
+
+@section scripts
+{
+    document.getElementById("searchTextBox").focus();
 }
