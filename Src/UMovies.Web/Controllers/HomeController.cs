@@ -10,46 +10,39 @@ namespace UMovies.Web.Controllers
         public ActionResult Index()
         {
             var entities = new UMoviesEntities();
-            var mediaCount = entities.Movies.Count();
-            var searchModel = new IndexViewModel { MediaCount = mediaCount };
-            return View(searchModel);
-        }
+            var movies = entities.Movies
+                .Select(m => new MovieViewModel { Name = m.Name, FilePath = m.FilePath.Replace("\\", "\\\\") });
 
-        [HttpPost]
-        public ActionResult Index(IndexViewModel indexViewModel)
-        {
-            return RedirectToAction("Search", new { searchText = indexViewModel.SearchText});
-        }
-
-        public ActionResult Search(string searchText)
-        {
-            var searchResults = new SearchResultViewModel();
-            var entities = new UMoviesEntities();
-            searchResults.Movies =
-                entities.Movies.Where(m => m.Name.ToLower().StartsWith(searchText.ToLower())).Select(m => new MovieViewModel { Name = m.Name, FilePath = m.FilePath }).ToList();
-            searchResults.ResultCount = searchResults.Movies.Count();
-            searchResults.SearchText = searchText;
-
-            return View(searchResults);
-        }
-
-        [HttpPost]
-        public ActionResult Search(SearchResultViewModel searchResults)
-        {
-            var entities = new UMoviesEntities();
-            searchResults.Movies =
-                entities.Movies.Where(m => m.Name.ToLower().StartsWith(searchResults.SearchText.ToLower())).Select(m => new MovieViewModel{ Name =  m.Name, FilePath = m.FilePath }).ToList();
-            searchResults.ResultCount = searchResults.Movies.Count();
-            searchResults.SearchText = searchResults.SearchText;
-
-            return View(searchResults);
-        }
-
-        public ActionResult All()
-        {
-            var entities = new UMoviesEntities();
-            var movies = entities.Movies.Select(m => new MovieViewModel { Name = m.Name, FilePath = m.FilePath.Replace("\\", "\\\\") });
             return View(movies);
+        }
+
+        public ActionResult Search()
+        {
+            var entities = new UMoviesEntities();
+            var mediaCount = entities.Movies.Count();
+            var searchViewModel = new SearchViewModel
+            {
+                MediaCount = mediaCount,
+                ResultCount = 0
+            };
+
+            return View(searchViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Search(SearchViewModel searchViewModel)
+        {
+            var entities = new UMoviesEntities();
+            var mediaCount = entities.Movies.Count();
+            searchViewModel.MediaCount = mediaCount;
+            searchViewModel.Movies =
+                entities.Movies
+                .Where(m => m.Name.ToLower().StartsWith(searchViewModel.SearchText.ToLower()))
+                .Select(m => new MovieViewModel{ Name =  m.Name, FilePath = m.FilePath })
+                .ToList();
+            searchViewModel.ResultCount = searchViewModel.Movies.Count();
+
+            return View(searchViewModel);
         }
 
         public ActionResult Player()

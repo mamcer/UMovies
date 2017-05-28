@@ -143,7 +143,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\All.cshtml" />
     <Content Include="Views\Home\Player.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <None Include="Web.Debug.config">
@@ -173,8 +172,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\MovieViewModel.cs" />
-    <Compile Include="Models\SearchResultViewModel.cs" />
-    <Compile Include="Models\IndexViewModel.cs" />
+    <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

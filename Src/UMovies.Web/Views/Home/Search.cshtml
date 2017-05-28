@@ -1,4 +1,4 @@
-﻿@model UMovies.Web.Models.SearchResultViewModel
+﻿@model UMovies.Web.Models.SearchViewModel
 
 @{
     ViewBag.Title = "Search";
@@ -9,7 +9,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <br/>
+        <br />
         <div class="form-group">
             <div class="col-md-10">
                 @Html.EditorFor(model => model.SearchText, new { htmlAttributes = new { @class = "form-control" } })
@@ -22,13 +22,18 @@
                 <input type="submit" value="Search" class="btn btn-primary" />
             </div>
         </div>
+        
+        <p>Searching over @Model.MediaCount media files</p>
     </div>
 }
 
-<h3>@Model.ResultCount Results for '@Model.SearchText'</h3>
-
-@foreach (var movie in Model.Movies)
+@if (Model.ResultCount > 0)
 {
-    <a href="javascript:playMovie('@movie.FilePath')">@movie.Name</a>
-    <br />
+    <h3>@Model.ResultCount Results for '@Model.SearchText'</h3>
+
+    foreach (var movie in Model.Movies)
+    {
+        <a href="javascript:playMovie('@movie.FilePath')">@movie.Name</a>
+        <br />
+    }
 }
