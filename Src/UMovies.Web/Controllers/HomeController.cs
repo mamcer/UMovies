@@ -11,7 +11,13 @@ namespace UMovies.Web.Controllers
         {
             var entities = new UMoviesEntities();
             var movies = entities.Movies
-                .Select(m => new MovieViewModel { Name = m.Name, FilePath = m.MovieFilePath.Replace("\\", "\\\\") });
+                .Select(m => new MovieViewModel
+                {
+                    Id = m.Id,
+                    Year = m.Year,
+                    Name = m.Name,
+                    MovieFilePath = m.MovieFilePath.Replace("\\", "\\\\")
+                }).OrderBy(m => m.Name);
 
             return View(movies);
         }
@@ -38,7 +44,7 @@ namespace UMovies.Web.Controllers
             searchViewModel.Movies =
                 entities.Movies
                 .Where(m => m.Name.ToLower().StartsWith(searchViewModel.SearchText.ToLower()))
-                .Select(m => new MovieViewModel{ Name =  m.Name, FilePath = m.MovieFilePath })
+                .Select(m => new MovieViewModel{ Name =  m.Name, MovieFilePath = m.MovieFilePath })
                 .ToList();
             searchViewModel.ResultCount = searchViewModel.Movies.Count();
 
@@ -48,6 +54,22 @@ namespace UMovies.Web.Controllers
         public ActionResult Player()
         {
             return View();
+        }
+
+        public ActionResult Show(int id)
+        {
+            var entities = new UMoviesEntities();
+            var movie = entities.Movies.Where(m => m.Id == id).Select(m => new MovieViewModel
+            {
+                Id = m.Id,
+                Name = m.Name,
+                Sinopsis = m.Sinopsis,
+                Year = m.Year,
+                MovieFilePath = m.MovieFilePath,
+                ThumbnailFilePath = m.ThumbnailFilePath
+            }).FirstOrDefault();
+
+            return View(movie);
         }
     }
 }

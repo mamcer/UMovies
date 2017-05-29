@@ -2,12 +2,24 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
 
-@foreach (var movie in Model)
-{
-    <p><a href="javascript:playMovie('@movie.FilePath')">@movie.Name</a></p>
-}
+<table class="table table-striped">
+    <tr>
+        <th>@Html.DisplayNameFor(modelItem => modelItem.Year)</th>
+        <th>@Html.DisplayNameFor(modelItem => modelItem.Name)</th>
+    </tr>
+    @foreach (var movie in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => movie.Year)
+            </td>
+            <td>
+                <p>@Html.ActionLink(movie.Name, "Show", "Home", new { id = movie.Id }, null)</p>
+            </td>
+        </tr>
+    }
+</table>

@@ -34,7 +34,7 @@
 
     foreach (var movie in Model.Movies)
     {
-        <p><a href="javascript:playMovie('@movie.FilePath')">@movie.Name</a></p>
+        <p><a href="javascript:playMovie('@movie.MovieFilePath')">@movie.Name</a></p>
     }
 }
 

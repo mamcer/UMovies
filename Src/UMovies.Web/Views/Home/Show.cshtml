@@ -1,0 +1,23 @@
+﻿@model UMovies.Web.Models.MovieViewModel
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>@Model.Name (@Model.Year)</h2>
+
+<input type="button" value="Play Movie" onclick="javascript:playMovie('@Model.MovieFilePath')" />
+
+<br />
+<br />
+
+<table class="table">
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => Model.ThumbnailFilePath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => Model.Sinopsis)
+        </td>
+    </tr>
+</table>
