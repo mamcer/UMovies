@@ -11,7 +11,7 @@ namespace UMovies.Web.Controllers
         {
             var entities = new UMoviesEntities();
             var movies = entities.Movies
-                .Select(m => new MovieViewModel { Name = m.Name, FilePath = m.FilePath.Replace("\\", "\\\\") });
+                .Select(m => new MovieViewModel { Name = m.Name, FilePath = m.MovieFilePath.Replace("\\", "\\\\") });
 
             return View(movies);
         }
@@ -38,7 +38,7 @@ namespace UMovies.Web.Controllers
             searchViewModel.Movies =
                 entities.Movies
                 .Where(m => m.Name.ToLower().StartsWith(searchViewModel.SearchText.ToLower()))
-                .Select(m => new MovieViewModel{ Name =  m.Name, FilePath = m.FilePath })
+                .Select(m => new MovieViewModel{ Name =  m.Name, FilePath = m.MovieFilePath })
                 .ToList();
             searchViewModel.ResultCount = searchViewModel.Movies.Count();
 

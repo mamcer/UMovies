@@ -2,6 +2,8 @@
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using UMovies.Data;
 
 namespace UMovies.Scanner
@@ -11,22 +13,43 @@ namespace UMovies.Scanner
         static void Main(string[] args)
         {
             var entities = new UMoviesEntities();
+
             var rootFolder = ConfigurationManager.AppSettings["RootFolder"];
             var mediaFileExtensions = ConfigurationManager.AppSettings["MediaFileExtensions"];
+            var pictureFileExtensions = ConfigurationManager.AppSettings["PictureFileExtensions"];
+
             ConsoleLog($"Starting scan on {rootFolder}");
             var folderPaths = Directory.GetDirectories(rootFolder);
             ConsoleLog($"Found {folderPaths.Length} folders");
             int movieCount = 0;
+
             foreach (var path in folderPaths)
             {
-                var name = Path.GetFileName(path);
-                var fileName = Path.GetFileName(Directory.GetFiles(path, mediaFileExtensions).FirstOrDefault());
+                var folderName = Path.GetFileName(path);
+                var match = Regex.Match(folderName, "(\\d+)-([\\w\\s]+)", RegexOptions.IgnoreCase);
+                var year = match.Groups[1].Value;
+                var name = match.Groups[2].Value;
+                var movieFileName = Path.GetFileName(Directory.GetFiles(path, mediaFileExtensions).FirstOrDefault());
+                var thumbnailFileName = Path.GetFileName(Directory.GetFiles(path, pictureFileExtensions).FirstOrDefault());
+                string sinopsis = string.Empty;
+                var sinopsisPath = Path.Combine(path, "sinopsis.txt");
+                if (File.Exists(sinopsisPath))
+                {
+                    sinopsis = File.ReadAllText(sinopsisPath, Encoding.Default);
+                }
 
                 ConsoleLog($"Scanning folder: {name}");
 
-                if (!string.IsNullOrEmpty(fileName))
+                if (!string.IsNullOrEmpty(movieFileName))
                 {
-                    var movie = new Movie {Name = name, FilePath = Path.Combine(name, fileName)};
+                    var movie = new Movie
+                    {
+                        Year = Convert.ToInt32(year),
+                        Name = name,
+                        MovieFilePath = Path.Combine(name, movieFileName),
+                        ThumbnailFilePath = Path.Combine(name, thumbnailFileName),
+                        Sinopsis = sinopsis
+                    };
                     movieCount += 1;
                     var existingMovie = entities.Movies.FirstOrDefault(m => m.Name == name);
                     if (existingMovie == null)
