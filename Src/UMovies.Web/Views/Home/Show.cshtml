@@ -14,7 +14,10 @@
 <table class="table">
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => Model.ThumbnailFilePath)
+            <picture>
+                <source src="~/Pictures/@Model.ThumbnailFilePath" />
+                <img src="~/Pictures/@Model.ThumbnailFilePath" />
+            </picture>
         </td>
         <td>
             @Html.DisplayFor(modelItem => Model.Sinopsis)

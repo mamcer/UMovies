@@ -176,7 +176,9 @@
     <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Images\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UMovies.Data\UMovies.Data.csproj">
       <Project>{88382dfe-ce74-4ca6-84f3-bc937521b57c}</Project>
