@@ -18,12 +18,6 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-                <div class="col-md-10">
-                    <input type="submit" value="Search" class="btn btn-primary" />
-                </div>
-            </div>*@
-
         <p>Searching over @Model.MediaCount media files</p>
     </div>
 }
@@ -34,7 +28,7 @@
 
     foreach (var movie in Model.Movies)
     {
-        <p><a href="javascript:playMovie('@movie.MovieFolder', '@movie.MovieFile')">@movie.Name</a></p>
+        <p>@Html.ActionLink(movie.Name, "Show", "Home", new { id = movie.Id }, null)</p>
     }
 }
 

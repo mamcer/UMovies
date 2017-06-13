@@ -47,6 +47,7 @@ namespace UMovies.Web.Controllers
                 .Where(m => m.Name.ToLower().StartsWith(searchViewModel.SearchText.ToLower()))
                 .Select(m => new MovieViewModel
                 {
+                    Id = m.Id,
                     Name = m.Name,
                     MovieFolder = m.MovieFolder,
                     MovieFile = m.MovieFile
