@@ -46,8 +46,9 @@ namespace UMovies.Scanner
                     {
                         Year = Convert.ToInt32(year),
                         Name = name,
-                        MovieFilePath = Path.Combine(name, movieFileName),
-                        ThumbnailFilePath = Path.Combine(name, thumbnailFileName),
+                        MovieFolder = folderName,
+                        MovieFile = movieFileName,
+                        ThumbnailFile = thumbnailFileName,
                         Sinopsis = sinopsis
                     };
                     movieCount += 1;

@@ -52,8 +52,8 @@
            });
         });
 
-        function playMovie(fileName) {
-            hub.server.playMovie(fileName);
+        function playMovie(folderName, fileName) {
+            hub.server.playMovie(folderName, fileName);
             window.location.href = "/Home/Player";
         }
 

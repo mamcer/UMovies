@@ -68,13 +68,15 @@ namespace UMovies.Player
                 }
             });
 
-            _soulstoneHub.On<string>("PlayMovie", (fileName) =>
+            _soulstoneHub.On<string, string>("PlayMovie", (folderName, fileName) =>
             {
                 try
                 {
                     KillProcess();
                     InvokeConsoleLog(fileName);
-                    var arguments = $@"""{Path.Combine(_videoRootFolder, fileName)}"" /fullscreen";
+                    var movieFilePath = Path.Combine(_videoRootFolder, Path.Combine(folderName, fileName));
+                    var arguments = $@"""{movieFilePath}"" /fullscreen";
+                    InvokeConsoleLog(arguments);
                     var processStart = new ProcessStartInfo(_videoPlayerPath, arguments);
                     _process = Process.Start(processStart);
                 }

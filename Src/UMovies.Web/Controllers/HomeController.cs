@@ -16,7 +16,8 @@ namespace UMovies.Web.Controllers
                     Id = m.Id,
                     Year = m.Year,
                     Name = m.Name,
-                    MovieFilePath = m.MovieFilePath.Replace("\\", "\\\\")
+                    MovieFolder = m.MovieFolder,
+                    MovieFile = m.MovieFile
                 }).OrderBy(m => m.Name);
 
             return View(movies);
@@ -44,7 +45,12 @@ namespace UMovies.Web.Controllers
             searchViewModel.Movies =
                 entities.Movies
                 .Where(m => m.Name.ToLower().StartsWith(searchViewModel.SearchText.ToLower()))
-                .Select(m => new MovieViewModel{ Name =  m.Name, MovieFilePath = m.MovieFilePath })
+                .Select(m => new MovieViewModel
+                {
+                    Name = m.Name,
+                    MovieFolder = m.MovieFolder,
+                    MovieFile = m.MovieFile
+                })
                 .ToList();
             searchViewModel.ResultCount = searchViewModel.Movies.Count();
 
@@ -65,8 +71,9 @@ namespace UMovies.Web.Controllers
                 Name = m.Name,
                 Sinopsis = m.Sinopsis,
                 Year = m.Year,
-                MovieFilePath = m.MovieFilePath,
-                ThumbnailFilePath = m.ThumbnailFilePath
+                MovieFile = m.MovieFile,
+                MovieFolder = m.MovieFolder,
+                ThumbnailFile = m.ThumbnailFile
             }).FirstOrDefault();
 
             return View(movie);

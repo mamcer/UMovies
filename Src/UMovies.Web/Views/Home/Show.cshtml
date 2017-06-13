@@ -1,4 +1,5 @@
-﻿@model UMovies.Web.Models.MovieViewModel
+﻿@using System.Configuration
+@model UMovies.Web.Models.MovieViewModel
 
 @{
     ViewBag.Title = "Show";
@@ -6,17 +7,21 @@
 
 <h2>@Model.Name (@Model.Year)</h2>
 
-<input type="button" value="Play Movie" onclick="javascript:playMovie('@Model.MovieFilePath')" />
+<input type="button" value="Play Movie" onclick="javascript:playMovie('@Model.MovieFolder', '@Model.MovieFile')" />
 
 <br />
 <br />
+
+@{
+    var picturesUrl = ConfigurationManager.AppSettings["PicturesUrl"];
+}
 
 <table class="table">
     <tr>
         <td>
             <picture>
-                <source src="~/Pictures/@Model.ThumbnailFilePath" />
-                <img src="~/Pictures/@Model.ThumbnailFilePath" />
+                <source src="@picturesUrl/@Model.MovieFolder/@Model.ThumbnailFile" />
+                <img src="@picturesUrl/@Model.MovieFolder/@Model.ThumbnailFile" />
             </picture>
         </td>
         <td>

@@ -58,6 +58,10 @@
     <Compile Include="Migrations\201705290104551_MovieProperties.Designer.cs">
       <DependentUpon>201705290104551_MovieProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706130008085_MovieFolders.cs" />
+    <Compile Include="Migrations\201706130008085_MovieFolders.Designer.cs">
+      <DependentUpon>201706130008085_MovieFolders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,6 +77,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705290104551_MovieProperties.resx">
       <DependentUpon>201705290104551_MovieProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706130008085_MovieFolders.resx">
+      <DependentUpon>201706130008085_MovieFolders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

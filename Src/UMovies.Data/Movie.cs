@@ -16,13 +16,17 @@ namespace UMovies.Data
 
         [Required]
         [MaxLength(255)]
-        public string MovieFilePath { get; set; }
+        public string MovieFolder { get; set; }
+
+        [Required]
+        [MaxLength(255)]
+        public string MovieFile { get; set; }
 
         [DataType(DataType.Text)]
         [MaxLength(2500)]
         public string Sinopsis { get; set; }
 
         [MaxLength(255)]
-        public string ThumbnailFilePath { get; set; }
+        public string ThumbnailFile { get; set; }
     }
 }

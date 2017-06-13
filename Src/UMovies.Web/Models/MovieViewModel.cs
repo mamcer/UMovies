@@ -10,8 +10,10 @@
 
         public string Sinopsis { get; set; }
 
-        public string MovieFilePath { get; set; }
+        public string MovieFolder { get; set; }
 
-        public string ThumbnailFilePath { get; set; }
+        public string MovieFile { get; set; }
+
+        public string ThumbnailFile { get; set; }
     }
 }

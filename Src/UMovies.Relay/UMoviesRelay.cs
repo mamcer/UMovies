@@ -11,9 +11,9 @@ namespace UMovies.Relay
             Clients.Others.Welcome("Hello!");
         }
 
-        public void PlayMovie(string fileName)
+        public void PlayMovie(string folderName, string fileName)
         {
-            Clients.Others.PlayMovie(fileName);
+            Clients.Others.PlayMovie(folderName, fileName);
         }
 
         public void PlayPause()
