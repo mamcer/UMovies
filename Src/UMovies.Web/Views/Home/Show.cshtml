@@ -7,8 +7,14 @@
 
 <h2>@Model.Name (@Model.Year)</h2>
 
-<input type="button" value="Play Movie" onclick="javascript:playMovie('@Model.MovieFolder', '@Model.MovieFile')" />
-
+@if (Model.MovieFiles.Count() == 1)
+{
+    <input type="button" value="Play Movie" onclick="javascript:playMovie('@Model.MovieFolder', '@Model.MovieFiles.FirstOrDefault()')" />
+}
+else
+{
+    <input type="button" value="Play All Files (@Model.MovieFiles.Count())" onclick="javascript:playAllMovieFiles(@Model.Id)" />
+}
 <br />
 <br />
 
@@ -16,7 +22,7 @@
     var picturesUrl = ConfigurationManager.AppSettings["PicturesUrl"];
 }
 
-<table class="table">
+<table>
     <tr>
         <td>
             <picture>
@@ -29,3 +35,19 @@
         </td>
     </tr>
 </table>
+
+@if (Model.MovieFiles.Count() > 1)
+{
+    <h3>Files (@Model.MovieFiles.Count())</h3>
+
+    <table>
+        @foreach (var fileName in Model.MovieFiles)
+        {
+            <tr>
+                <td>
+                    <a href="javascript:playMovie('@Model.MovieFolder', '@fileName')" target="_blank">@fileName</a>
+                </td>
+            </tr>
+        }
+    </table>
+}

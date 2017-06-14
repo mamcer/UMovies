@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UMovies.Data
@@ -18,15 +19,13 @@ namespace UMovies.Data
         [MaxLength(255)]
         public string MovieFolder { get; set; }
 
-        [Required]
-        [MaxLength(255)]
-        public string MovieFile { get; set; }
+        public virtual ICollection<MovieFile> MovieFiles { get; set; }
 
         [DataType(DataType.Text)]
         [MaxLength(2500)]
         public string Sinopsis { get; set; }
 
         [MaxLength(255)]
-        public string ThumbnailFile { get; set; }
+        public string ThumbnailFileName { get; set; }
     }
 }

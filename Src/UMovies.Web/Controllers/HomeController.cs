@@ -17,7 +17,7 @@ namespace UMovies.Web.Controllers
                     Year = m.Year,
                     Name = m.Name,
                     MovieFolder = m.MovieFolder,
-                    MovieFile = m.MovieFile
+                    MovieFiles = m.MovieFiles.Select(v => v.FileName).ToList()
                 }).OrderBy(m => m.Name);
 
             return View(movies);
@@ -50,7 +50,7 @@ namespace UMovies.Web.Controllers
                     Id = m.Id,
                     Name = m.Name,
                     MovieFolder = m.MovieFolder,
-                    MovieFile = m.MovieFile
+                    MovieFiles = m.MovieFiles.Select(v => v.FileName).ToList()
                 })
                 .ToList();
             searchViewModel.ResultCount = searchViewModel.Movies.Count();
@@ -72,9 +72,9 @@ namespace UMovies.Web.Controllers
                 Name = m.Name,
                 Sinopsis = m.Sinopsis,
                 Year = m.Year,
-                MovieFile = m.MovieFile,
+                MovieFiles = m.MovieFiles.Select(v => v.FileName).ToList(),
                 MovieFolder = m.MovieFolder,
-                ThumbnailFile = m.ThumbnailFile
+                ThumbnailFile = m.ThumbnailFileName
             }).FirstOrDefault();
 
             return View(movie);

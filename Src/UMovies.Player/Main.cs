@@ -3,9 +3,11 @@ using System;
 using System.Configuration;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using WindowsInput;
 using WindowsInput.Native;
+using UMovies.Data;
 
 namespace UMovies.Player
 {
@@ -86,6 +88,37 @@ namespace UMovies.Player
                 }
             });
 
+            _soulstoneHub.On<int>("PlayAllMovieFiles", (movieId) =>
+            {
+                try
+                {
+                    KillProcess();
+                    var entities = new UMoviesEntities();
+                    var movie = entities.Movies.FirstOrDefault(m => m.Id == movieId);
+                    if (movie != null)
+                    {
+                        var movieFilePath = string.Empty;
+                        foreach (var movieFile in movie.MovieFiles)
+                        {
+                            movieFilePath +=$@"""{Path.Combine(_videoRootFolder, Path.Combine(movie.MovieFolder, movieFile.FileName))}"" ";
+                        }
+
+                        var arguments = $@"/add /play {movieFilePath} /fullscreen";
+                        InvokeConsoleLog(arguments);
+                        var processStart = new ProcessStartInfo(_videoPlayerPath, arguments);
+                        _process = Process.Start(processStart);
+                    }
+                    else
+                    {
+                        ConsoleLog($"Movie with id:{movieId} not found");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ConsoleLog("An error has occurred: " + ex.Message);
+                }
+            });
+            
             _soulstoneHub.On("PlayPause", () =>
             {
                 try

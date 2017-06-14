@@ -21,6 +21,11 @@ namespace UMovies.Relay
             Clients.Others.PlayPause();
         }
 
+        public void PlayAllMovieFiles(int movieId)
+        {
+            Clients.Others.PlayAllMovieFiles(movieId);
+        }        
+
         public void SkipBack()
         {
             Clients.Others.SkipBack();

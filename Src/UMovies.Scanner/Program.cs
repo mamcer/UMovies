@@ -29,7 +29,7 @@ namespace UMovies.Scanner
                 var match = Regex.Match(folderName, "(\\d+)-([\\w\\s]+)", RegexOptions.IgnoreCase);
                 var year = match.Groups[1].Value;
                 var name = match.Groups[2].Value;
-                var movieFileName = Path.GetFileName(Directory.GetFiles(path, mediaFileExtensions).FirstOrDefault());
+                var movieFileName = Directory.GetFiles(path, mediaFileExtensions).Select(Path.GetFileName).ToList();
                 var thumbnailFileName = Path.GetFileName(Directory.GetFiles(path, pictureFileExtensions).FirstOrDefault());
                 string sinopsis = string.Empty;
                 var sinopsisPath = Path.Combine(path, "sinopsis.txt");
@@ -40,15 +40,18 @@ namespace UMovies.Scanner
 
                 ConsoleLog($"Scanning folder: {name}");
 
-                if (!string.IsNullOrEmpty(movieFileName))
+                if (movieFileName.Any())
                 {
                     var movie = new Movie
                     {
                         Year = Convert.ToInt32(year),
                         Name = name,
                         MovieFolder = folderName,
-                        MovieFile = movieFileName,
-                        ThumbnailFile = thumbnailFileName,
+                        MovieFiles = movieFileName.Select(m => new MovieFile
+                        {
+                            FileName = m
+                        }).ToList(),
+                        ThumbnailFileName = thumbnailFileName,
                         Sinopsis = sinopsis
                     };
                     movieCount += 1;

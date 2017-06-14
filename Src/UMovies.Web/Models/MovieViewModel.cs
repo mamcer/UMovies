@@ -1,4 +1,6 @@
-﻿namespace UMovies.Web.Models
+﻿using System.Collections.Generic;
+
+namespace UMovies.Web.Models
 {
     public class MovieViewModel
     {
@@ -12,7 +14,7 @@
 
         public string MovieFolder { get; set; }
 
-        public string MovieFile { get; set; }
+        public List<string> MovieFiles { get; set; }
 
         public string ThumbnailFile { get; set; }
     }

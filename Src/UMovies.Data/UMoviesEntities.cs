@@ -9,5 +9,14 @@ namespace UMovies.Data
         }
 
         public DbSet<Movie> Movies { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder
+                .Entity<Movie>()
+                .HasMany(mc => mc.MovieFiles)
+                .WithRequired()
+                .WillCascadeOnDelete(true);
+        }
     }
 }

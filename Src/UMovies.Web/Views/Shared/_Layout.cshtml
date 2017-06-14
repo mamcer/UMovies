@@ -57,6 +57,11 @@
             window.location.href = "/Home/Player";
         }
 
+        function playAllMovieFiles(movieId) {
+            hub.server.playAllMovieFiles(movieId);
+            window.location.href = "/Home/Player";
+        }
+
         @RenderSection("scripts", required: false)
     </script>
 </body>
