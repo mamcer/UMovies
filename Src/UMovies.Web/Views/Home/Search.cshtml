@@ -18,18 +18,38 @@
             </div>
         </div>
 
-        <p>Searching over @Model.MediaCount media files</p>
+        @if (Model.ResultCount == 0)
+        {
+            <p>Searching over @Model.MediaCount media files</p>
+        }
     </div>
 }
 
 @if (Model.ResultCount > 0)
 {
-    <h3>@Model.ResultCount Results for '@Model.SearchText'</h3>
+    <p>@Model.ResultCount Results for '@Model.SearchText'</p>
 
-    foreach (var movie in Model.Movies)
-    {
-        <p>@Html.ActionLink(movie.Name, "Show", "Home", new { id = movie.Id }, null)</p>
-    }
+    <table class="table table-striped">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Name
+            </th>
+        </tr>
+        @{
+            var i = 1;
+        }
+        @foreach (var movie in Model.Movies)
+        {
+            <tr>
+                <td>@i.ToString()</td>
+                <td>@Html.ActionLink(movie.Name, "Show", "Home", new { id = movie.Id }, null)</td>
+            </tr>
+            i += 1;
+        }
+    </table>
 }
 
 @section scripts

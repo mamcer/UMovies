@@ -5,15 +5,15 @@
     ViewBag.Title = "Show";
 }
 
-<h2>@Model.Name (@Model.Year)</h2>
+<h2>@Model.Name <span class="badge">@Model.Year</span></h2>
 
 @if (Model.MovieFiles.Count() == 1)
 {
-    <input type="button" value="Play Movie" onclick="javascript:playMovie('@Model.MovieFolder', '@Model.MovieFiles.FirstOrDefault()')" />
+    <input type="button" value="Play Movie" onclick="javascript:playMovie('@Model.MovieFolder', '@Model.MovieFiles.FirstOrDefault()')" class="btn btn-default btn-success" />
 }
 else
 {
-    <input type="button" value="Play All Files (@Model.MovieFiles.Count())" onclick="javascript:playAllMovieFiles(@Model.Id)" />
+    <input type="button" value="Play All Files (@Model.MovieFiles.Count())" onclick="javascript:playAllMovieFiles(@Model.Id)" class="btn btn-default btn-success" />
 }
 <br />
 <br />
@@ -22,7 +22,7 @@ else
     var picturesUrl = ConfigurationManager.AppSettings["PicturesUrl"];
 }
 
-<table>
+<table class="table table-condensed">
     <tr>
         <td>
             <picture>
@@ -40,14 +40,26 @@ else
 {
     <h3>Files (@Model.MovieFiles.Count())</h3>
 
-    <table>
+
+    <table class="table table-striped">
+        <tr>
+            <th>
+                #
+            </th>
+            <th>
+                Name
+            </th>
+        </tr>
+        @{
+            var i = 1;
+        }
         @foreach (var fileName in Model.MovieFiles)
         {
             <tr>
-                <td>
-                    <a href="javascript:playMovie('@Model.MovieFolder', '@fileName')" target="_blank">@fileName</a>
-                </td>
+                <td>@i.ToString()</td>
+                <td><a href="javascript:playMovie('@Model.MovieFolder', '@fileName')" target="_blank">@fileName</a></td>
             </tr>
+            i += 1;
         }
     </table>
 }
