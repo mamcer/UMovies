@@ -55,7 +55,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Release.config" />
+    <None Include="Config\App.Debug.config" />
+    <None Include="Config\App.Release.config" />
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -66,4 +67,8 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <Delete Files="$(TargetDir)$(TargetFileName).config" />
+    <Copy SourceFiles="$(ProjectDir)\Config\App.$(Configuration).config" DestinationFiles="$(TargetDir)$(TargetFileName).config" />
+  </Target>
 </Project>
