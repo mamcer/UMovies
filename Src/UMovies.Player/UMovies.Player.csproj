@@ -114,7 +114,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="App.Release.config" />
+    <None Include="Config\App.Debug.config" />
+    <None Include="Config\App.Release.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -151,11 +152,9 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
   <Target Name="AfterBuild">
+    <Delete Files="$(TargetDir)$(TargetFileName).config" />
+    <Copy SourceFiles="$(ProjectDir)\Config\App.$(Configuration).config"
+          DestinationFiles="$(TargetDir)$(TargetFileName).config" />
   </Target>
-  -->
 </Project>
