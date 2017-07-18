@@ -259,3 +259,5 @@ open-cover.xml
 *.Release.config
 *.SetParameters.xml
 *.jfm
+
+.sonarqube/
