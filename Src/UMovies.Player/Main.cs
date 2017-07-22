@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsInput;
 using WindowsInput.Native;
@@ -51,7 +52,7 @@ namespace UMovies.Player
             }
         }
 
-        private async void InitializeSignalR(string url)
+        private async Task InitializeSignalR(string url)
         {
             _hubConnection?.Stop();
 
