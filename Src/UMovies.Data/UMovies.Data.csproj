@@ -50,6 +50,12 @@
     <Compile Include="..\Common\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="MovieRepository.cs" />
+    <Compile Include="EntityFrameworkRepository.cs" />
+    <Compile Include="EntityFrameworkUnitOfWork.cs" />
+    <Compile Include="IMovieRepository.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Migrations\201704191831213_InitialCreate.cs" />
     <Compile Include="Migrations\201704191831213_InitialCreate.Designer.cs">
       <DependentUpon>201704191831213_InitialCreate.cs</DependentUpon>
