@@ -7,6 +7,11 @@ namespace UMovies.Core
     [Table("Movie")]
     public class Movie
     {
+        public Movie()
+        {
+            MovieFiles = new List<MovieFile>();
+        }
+
         public int Id { get; set; }
 
         [Required]
