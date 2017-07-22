@@ -73,8 +73,6 @@
       <DependentUpon>201706132110251_MovieFiles.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Movie.cs" />
-    <Compile Include="MovieFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UMoviesEntities.cs" />
   </ItemGroup>
@@ -95,6 +93,12 @@
     <EmbeddedResource Include="Migrations\201706132110251_MovieFiles.resx">
       <DependentUpon>201706132110251_MovieFiles.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UMovies.Core\UMovies.Core.csproj">
+      <Project>{50fdff0e-e757-4c45-a5f5-eed7c790be44}</Project>
+      <Name>UMovies.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

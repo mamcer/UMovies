@@ -1,4 +1,4 @@
-﻿namespace UMovies.Data
+﻿namespace UMovies.Core
 {
     public class MovieFile
     {

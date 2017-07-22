@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UMovies.Data
+namespace UMovies.Core
 {
     [Table("Movie")]
     public class Movie
