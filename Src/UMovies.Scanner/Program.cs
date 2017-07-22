@@ -4,8 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using CrossCutting.MainModule.IOC;
 using UMovies.Core;
-using UMovies.Data;
 
 namespace UMovies.Scanner
 {
@@ -13,15 +13,15 @@ namespace UMovies.Scanner
     {
         static void Main(string[] args)
         {
-            var entities = new UMoviesEntities();
+            var container = new IocUnityContainer();
 
             var rootFolder = ConfigurationManager.AppSettings["RootFolder"];
             var mediaFileExtensions = ConfigurationManager.AppSettings["MediaFileExtensions"];
             var pictureFileExtensions = ConfigurationManager.AppSettings["PictureFileExtensions"];
 
-            ConsoleLog($"Starting scan on {rootFolder}");
+            ConsoleLog($"starting scan on {rootFolder}");
             var folderPaths = Directory.GetDirectories(rootFolder);
-            ConsoleLog($"Found {folderPaths.Length} folders");
+            ConsoleLog($"found {folderPaths.Length} folders");
             int movieCount = 0;
 
             foreach (var path in folderPaths)

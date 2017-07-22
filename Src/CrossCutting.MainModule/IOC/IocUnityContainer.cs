@@ -5,8 +5,8 @@ using CrossCutting.Core.IOC;
 using CrossCutting.Core.Logging;
 using CrossCutting.MainModule.Logging;
 using Microsoft.Practices.Unity;
-using UPictures.Data;
-using UPictures.Application;
+using UMovies.Application;
+using UMovies.Data;
 
 namespace CrossCutting.MainModule.IOC
 {
@@ -55,16 +55,9 @@ namespace CrossCutting.MainModule.IOC
             _unityContainer.RegisterType<ILogService, FileLogService>();
 
             _unityContainer.RegisterType<IUnitOfWork, EntityFrameworkUnitOfWork>();
-            _unityContainer.RegisterType<DbContext, UPicturesEntities>(new HierarchicalLifetimeManager());
+            _unityContainer.RegisterType<DbContext, UMoviesEntities>(new HierarchicalLifetimeManager());
 
-            _unityContainer.RegisterType<IAlbumRepository, AlbumRepository>();
-            _unityContainer.RegisterType<IPictureRepository, PictureRepository>();
-            _unityContainer.RegisterType<IDownloadRepository, DownloadRepository>();
-
-            _unityContainer.RegisterType<IPictureService, PictureService>();
-            _unityContainer.RegisterType<IAlbumService, AlbumService>();
-            _unityContainer.RegisterType<IPictureService, PictureService>();
-            _unityContainer.RegisterType<IDownloadService, DownloadService>();
+            _unityContainer.RegisterType<IUMoviesService, UMoviesService>();
         }
     }
 }

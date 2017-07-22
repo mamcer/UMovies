@@ -56,13 +56,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CrossCutting.Core\CrossCutting.Core.csproj">
+      <Project>{c9213684-eab1-4c17-9313-534709c4fcb6}</Project>
+      <Name>CrossCutting.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CrossCutting.MainModule\CrossCutting.MainModule.csproj">
+      <Project>{cd7c9e78-0d7c-4b4e-8e5d-59459360b1b7}</Project>
+      <Name>CrossCutting.MainModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UMovies.Application\UMovies.Application.csproj">
+      <Project>{0d4d2739-6a89-4ca9-940c-2e82cf6f4129}</Project>
+      <Name>UMovies.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UMovies.Core\UMovies.Core.csproj">
       <Project>{50fdff0e-e757-4c45-a5f5-eed7c790be44}</Project>
       <Name>UMovies.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UMovies.Data\UMovies.Data.csproj">
-      <Project>{88382dfe-ce74-4ca6-84f3-bc937521b57c}</Project>
-      <Name>UMovies.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
