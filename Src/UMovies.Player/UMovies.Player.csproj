@@ -170,6 +170,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\UMovies.Core\UMovies.Core.csproj">
+      <Project>{50fdff0e-e757-4c45-a5f5-eed7c790be44}</Project>
+      <Name>UMovies.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UMovies.Data\UMovies.Data.csproj">
       <Project>{88382DFE-CE74-4CA6-84F3-BC937521B57C}</Project>
       <Name>UMovies.Data</Name>

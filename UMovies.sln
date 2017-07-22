@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMovies.Web", "Src\UMovies.
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "UMovies.Database", "Src\UMovies.Database\UMovies.Database.sqlproj", "{8BC6733E-D5B9-4FC5-BF61-6D4C88B7F4AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMovies.Data.Tests", "Src\UMovies.Data.Tests\UMovies.Data.Tests.csproj", "{24F7056A-384A-4024-9C08-34E7A74540FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMovies.Data.Test", "Src\UMovies.Data.Tests\UMovies.Data.Test.csproj", "{24F7056A-384A-4024-9C08-34E7A74540FF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{757C4DE9-9C19-4011-8826-F22E3DE2008C}"
 	ProjectSection(SolutionItems) = preProject

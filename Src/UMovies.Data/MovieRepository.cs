@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using UMovies.Core;
 
 namespace UMovies.Data
 {
