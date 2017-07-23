@@ -111,20 +111,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\umovies\Src\UMovies.Application\UMovies.Application.csproj">
-      <Project>{0d4d2739-6a89-4ca9-940c-2e82cf6f4129}</Project>
-      <Name>UMovies.Application</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\umovies\Src\UMovies.Data\UMovies.Data.csproj">
-      <Project>{88382dfe-ce74-4ca6-84f3-bc937521b57c}</Project>
-      <Name>UMovies.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CrossCutting.Core\CrossCutting.Core.csproj">
-      <Project>{c9213684-eab1-4c17-9313-534709c4fcb6}</Project>
-      <Name>CrossCutting.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
@@ -155,7 +141,20 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CrossCutting.Core\CrossCutting.Core.csproj">
+      <Project>{c9213684-eab1-4c17-9313-534709c4fcb6}</Project>
+      <Name>CrossCutting.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UMovies.Application\UMovies.Application.csproj">
+      <Project>{0d4d2739-6a89-4ca9-940c-2e82cf6f4129}</Project>
+      <Name>UMovies.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UMovies.Data\UMovies.Data.csproj">
+      <Project>{88382dfe-ce74-4ca6-84f3-bc937521b57c}</Project>
+      <Name>UMovies.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
