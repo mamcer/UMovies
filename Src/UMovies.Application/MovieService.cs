@@ -59,21 +59,8 @@ namespace UMovies.Application
             try
             {
                 var existingMovie = _movieRepository.List(m => m.Name == movie.Name).FirstOrDefault();
-                if (existingMovie != null)
-                {
-                    existingMovie.Name = movie.Name;
-                    existingMovie.Sinopsis = movie.Sinopsis;
-                    existingMovie.MovieFolder = movie.MovieFolder;
-                    existingMovie.ThumbnailFileName = movie.ThumbnailFileName;
-                    existingMovie.Year = movie.Year;
-                    existingMovie.MovieFiles.Clear();
-                    foreach (var movieFile in movie.MovieFiles)
-                    {
-                        existingMovie.MovieFiles.Add(movieFile);
-                    }
-                }
-
-                _movieRepository.Update(existingMovie);
+                _movieRepository.Delete(existingMovie);
+                _movieRepository.Create(movie);
                 _unitOfWork.SaveChanges();
 
                 return movie;

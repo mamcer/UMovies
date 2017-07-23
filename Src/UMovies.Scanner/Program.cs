@@ -81,7 +81,7 @@ namespace UMovies.Scanner
                 ConsoleLog("scan finished");
                 ConsoleLog($"{movieCount} movies found");
                 ConsoleLog($"total time: {DateTime.Now.Subtract(scanTime).ToString("hh\\:mm\\:ss")}");
-                _logService.Info("=========================================================================================");
+                _logService.Info($"{Environment.NewLine}=========================================================================================");
             }
             catch (Exception ex)
             {
