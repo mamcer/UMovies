@@ -57,7 +57,9 @@ namespace CrossCutting.MainModule.IOC
             _unityContainer.RegisterType<IUnitOfWork, EntityFrameworkUnitOfWork>();
             _unityContainer.RegisterType<DbContext, UMoviesEntities>(new HierarchicalLifetimeManager());
 
-            _unityContainer.RegisterType<IUMoviesService, UMoviesService>();
+            _unityContainer.RegisterType<IMovieRepository, MovieRepository>();
+
+            _unityContainer.RegisterType<IMovieService, MovieService>();
         }
     }
 }

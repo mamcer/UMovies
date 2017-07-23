@@ -1,5 +1,6 @@
 ﻿using System;
 using CrossCutting.Core.Logging;
+using UMovies.Data;
 
 namespace UMovies.Application
 {
@@ -7,9 +8,12 @@ namespace UMovies.Application
     {
         protected readonly ILogService _logService;
 
-        protected BaseService(ILogService logService)
+        protected readonly IUnitOfWork _unitOfWork;
+
+        protected BaseService(IUnitOfWork unitOfWork, ILogService logService)
         {
             _logService = logService;
+            _unitOfWork = unitOfWork;
         }
 
         protected void LogException(Exception ex)
