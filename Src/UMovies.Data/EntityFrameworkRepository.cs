@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace UMovies.Data
 {
@@ -60,6 +63,13 @@ namespace UMovies.Data
 
             DbContext.Set<TEntity>().Attach(entity);
             DbContext.Entry(entity).State = EntityState.Modified;
+        }
+
+        public IEnumerable<TEntity> List(Expression<Func<TEntity, bool>> predicate)
+        {
+            return _dbContext.Set<TEntity>()
+            .Where(predicate)
+            .AsEnumerable();
         }
     }
 }

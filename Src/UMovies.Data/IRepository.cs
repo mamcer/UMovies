@@ -1,4 +1,8 @@
-﻿namespace UMovies.Data
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+
+namespace UMovies.Data
 {
     public interface IRepository<TEntity, TKey> where TEntity : class
     {
@@ -9,5 +13,7 @@
         void Update(TEntity entity);
 
         void Delete(TEntity entity);
+
+        IEnumerable<TEntity> List(Expression<Func<TEntity, bool>> predicate);
     }
 }
