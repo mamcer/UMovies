@@ -14,12 +14,9 @@ namespace CrossCutting.MainModule.IOC
     {
         private static UnityContainer _unityContainer;
 
-        public IocUnityContainer() : this(new UnityContainer())
-        {}
-
-        public IocUnityContainer(UnityContainer container)
+        public IocUnityContainer()
         {
-            _unityContainer = container;
+            _unityContainer = new UnityContainer();
             RegisterTypes();
         }
 

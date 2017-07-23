@@ -1,11 +1,11 @@
-﻿using System;
+﻿using CrossCutting.Core.Logging;
+using CrossCutting.MainModule.IOC;
+using System;
 using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using CrossCutting.Core.Logging;
-using CrossCutting.MainModule.IOC;
 using UMovies.Application;
 using UMovies.Core;
 
