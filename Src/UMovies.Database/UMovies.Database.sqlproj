@@ -64,6 +64,6 @@
   <ItemGroup>
     <Build Include="Tables\Movie.sql" />
     <Build Include="Tables\__MigrationHistory.sql" />
-    <Build Include="Tables\MovieFiles.sql" />
+    <Build Include="Tables\MovieFile.sql" />
   </ItemGroup>
 </Project>
