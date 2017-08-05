@@ -22,14 +22,16 @@ else
     var picturesUrl = ConfigurationManager.AppSettings["PicturesUrl"];
 }
 
-<table class="table table-condensed">
+<table class="table table-responsive">
     <tr>
-        <td>
+        <td style="text-align: center">
             <picture>
                 <source src="@picturesUrl/@Model.MovieFolder/@Model.ThumbnailFile" />
                 <img src="@picturesUrl/@Model.MovieFolder/@Model.ThumbnailFile" />
             </picture>
         </td>
+    </tr>
+    <tr>
         <td>
             @Html.DisplayFor(modelItem => Model.Sinopsis)
         </td>
