@@ -49,8 +49,6 @@ namespace UMovies.Scanner
                         sinopsis = File.ReadAllText(sinopsisPath, Encoding.Default);
                     }
 
-                    ConsoleLog($"scanning folder: {name}");
-
                     if (movieFileName.Any())
                     {
                         var movie = new Movie
@@ -70,11 +68,17 @@ namespace UMovies.Scanner
                         if (existingMovie == null)
                         {
                             movieService.CreateMovie(movie);
+                            ConsoleLog($"scanning folder: {name} [create]");
                         }
                         else
                         {
                             movieService.UpdateMovie(movie);
+                            ConsoleLog($"scanning folder: {name} [update]");
                         }
+                    }
+                    else
+                    {
+                        ConsoleLog($"no movie files found for folder: {name}");
                     }
                 }
 
