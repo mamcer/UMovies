@@ -261,3 +261,4 @@ open-cover.xml
 *.jfm
 
 .sonarqube/
+results.xml
