@@ -9,7 +9,7 @@ SETLOCAL
 @REM  ----------------------------------------------------------------------------
 
 set start_time=%time%
-set msbuild_bin_path="%ProgramFiles(x86)%\MSBuild\14.0\Bin\msbuild.exe"
+set msbuild_bin_path="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe"
 set working_dir="%CD%"
 set solution_name=UMovies.sln
 
