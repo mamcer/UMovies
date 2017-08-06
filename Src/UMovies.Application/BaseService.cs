@@ -1,5 +1,5 @@
-﻿using System;
-using CrossCutting.Core.Logging;
+﻿using CrossCutting.Core.Logging;
+using System;
 using UMovies.Data;
 
 namespace UMovies.Application
@@ -22,6 +22,7 @@ namespace UMovies.Application
             {
                 _logService.Error(ex.Message);
                 _logService.Error(ex.StackTrace);
+
                 if (ex.InnerException != null)
                 {
                     _logService.Error(ex.InnerException.Message);

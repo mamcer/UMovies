@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CrossCutting.Core.Logging;
+using System;
 using System.Linq;
-using CrossCutting.Core.Logging;
 using UMovies.Core;
 using UMovies.Data;
 
@@ -19,7 +19,9 @@ namespace UMovies.Application
         {
             try
             {
-                return _movieRepository.List(m => m.Name == name).FirstOrDefault();
+                return _movieRepository
+                            .List(m => m.Name == name)
+                            .FirstOrDefault();
             }
             catch (Exception ex)
             {
@@ -58,7 +60,9 @@ namespace UMovies.Application
 
             try
             {
-                var existingMovie = _movieRepository.List(m => m.Name == movie.Name).FirstOrDefault();
+                var existingMovie = _movieRepository
+                                        .List(m => m.Name == movie.Name)
+                                        .FirstOrDefault();
                 _movieRepository.Delete(existingMovie);
                 _movieRepository.Create(movie);
                 _unitOfWork.SaveChanges();
