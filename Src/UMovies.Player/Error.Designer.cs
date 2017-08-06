@@ -56,7 +56,7 @@ namespace UMovies.Player
             this.txtError.Name = "txtError";
             this.txtError.ReadOnly = true;
             this.txtError.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtError.Size = new System.Drawing.Size(635, 234);
+            this.txtError.Size = new System.Drawing.Size(556, 248);
             this.txtError.TabIndex = 0;
             this.txtError.WordWrap = false;
             // 
@@ -64,11 +64,11 @@ namespace UMovies.Player
             // 
             this.lnkCopyToClipboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lnkCopyToClipboard.AutoSize = true;
-            this.lnkCopyToClipboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnkCopyToClipboard.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lnkCopyToClipboard.LinkColor = System.Drawing.Color.DarkSlateBlue;
-            this.lnkCopyToClipboard.Location = new System.Drawing.Point(12, 247);
+            this.lnkCopyToClipboard.Location = new System.Drawing.Point(10, 262);
             this.lnkCopyToClipboard.Name = "lnkCopyToClipboard";
-            this.lnkCopyToClipboard.Size = new System.Drawing.Size(118, 17);
+            this.lnkCopyToClipboard.Size = new System.Drawing.Size(118, 19);
             this.lnkCopyToClipboard.TabIndex = 1;
             this.lnkCopyToClipboard.TabStop = true;
             this.lnkCopyToClipboard.Text = "Copy to clipboard";
@@ -78,25 +78,25 @@ namespace UMovies.Player
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOk.Location = new System.Drawing.Point(550, 247);
+            this.btnOk.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.Location = new System.Drawing.Point(481, 262);
             this.btnOk.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 25);
+            this.btnOk.Size = new System.Drawing.Size(66, 27);
             this.btnOk.TabIndex = 2;
             this.btnOk.Text = "Ok";
             this.btnOk.UseVisualStyleBackColor = true;
             // 
             // Error
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(635, 280);
+            this.ClientSize = new System.Drawing.Size(556, 298);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.lnkCopyToClipboard);
             this.Controls.Add(this.txtError);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
