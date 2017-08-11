@@ -23,46 +23,6 @@ namespace UMovies.Web.Controllers
             return View(movies);
         }
 
-        public ActionResult Search()
-        {
-            var entities = new UMoviesEntities();
-            var mediaCount = entities.Movies.Count();
-            var searchViewModel = new SearchViewModel
-            {
-                MediaCount = mediaCount,
-                ResultCount = 0
-            };
-
-            return View(searchViewModel);
-        }
-
-        [HttpPost]
-        public ActionResult Search(SearchViewModel searchViewModel)
-        {
-            var entities = new UMoviesEntities();
-            var mediaCount = entities.Movies.Count();
-            searchViewModel.MediaCount = mediaCount;
-            searchViewModel.Movies =
-                entities.Movies
-                .Where(m => m.Name.ToLower().StartsWith(searchViewModel.SearchText.ToLower()))
-                .Select(m => new MovieViewModel
-                {
-                    Id = m.Id,
-                    Name = m.Name,
-                    MovieFolder = m.MovieFolder,
-                    MovieFiles = m.MovieFiles.Select(v => v.FileName).ToList()
-                })
-                .ToList();
-            searchViewModel.ResultCount = searchViewModel.Movies.Count();
-
-            return View(searchViewModel);
-        }
-
-        public ActionResult Player()
-        {
-            return View();
-        }
-
         public ActionResult Show(int id)
         {
             var entities = new UMoviesEntities();

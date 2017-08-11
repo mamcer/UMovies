@@ -22,8 +22,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @Html.ActionLink("UMovies", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
-                    @Html.ActionLink("Player", "Player", "Home", new {area = ""}, new {@class = "navbar-brand"})
-                    @Html.ActionLink("Search", "Search", "Home", new {area = ""}, new {@class = "navbar-brand"})
+                    @Html.ActionLink("Player", "Index", "Player", new {area = ""}, new {@class = "navbar-brand"})
+                    @Html.ActionLink("Search", "Index", "Search", new {area = ""}, new {@class = "navbar-brand"})
                 </ul>
             </div>
         </div>
@@ -56,12 +56,12 @@
 
         function playMovie(folderName, fileName) {
             hub.server.playMovie(folderName, fileName);
-            window.location.href = "/Home/Player";
+            window.location.href = "/Player/Index";
         }
 
         function playAllMovieFiles(movieId) {
             hub.server.playAllMovieFiles(movieId);
-            window.location.href = "/Home/Player";
+            window.location.href = "/Player/Index";
         }
 
         @RenderSection("scripts", required: false)
