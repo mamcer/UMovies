@@ -1,16 +1,25 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using UMovies.Data;
+using CrossCutting.Core.Logging;
+using UMovies.Application;
 using UMovies.Web.Models;
 
 namespace UMovies.Web.Controllers
 {
     public class SearchController : Controller
     {
+        private readonly ILogService _logService;
+        private readonly IMovieService _movieService;
+
+        public SearchController(ILogService logService, IMovieService movieService)
+        {
+            _logService = logService;
+            _movieService = movieService;
+        }
+
         public ActionResult Index()
         {
-            var entities = new UMoviesEntities();
-            var mediaCount = entities.Movies.Count();
+            var mediaCount = _movieService.GetMovieCount();
             var searchViewModel = new SearchViewModel
             {
                 MediaCount = mediaCount,
@@ -23,20 +32,17 @@ namespace UMovies.Web.Controllers
         [HttpPost]
         public ActionResult Index(SearchViewModel searchViewModel)
         {
-            var entities = new UMoviesEntities();
-            var mediaCount = entities.Movies.Count();
-            searchViewModel.MediaCount = mediaCount;
-            searchViewModel.Movies =
-                entities.Movies
-                    .Where(m => m.Name.ToLower().StartsWith(searchViewModel.SearchText.ToLower()))
-                    .Select(m => new MovieViewModel
-                    {
-                        Id = m.Id,
-                        Name = m.Name,
-                        MovieFolder = m.MovieFolder,
-                        MovieFiles = m.MovieFiles.Select(v => v.FileName).ToList()
-                    })
-                    .ToList();
+            var searchResults = _movieService.Search(searchViewModel.SearchText);
+
+            searchViewModel.MediaCount = _movieService.GetMovieCount();
+            searchViewModel.Movies = searchResults.Select(m => new MovieViewModel
+            {
+                Id = m.Id,
+                Name = m.Name,
+                MovieFolder = m.MovieFolder,
+                MovieFiles = m.MovieFiles.Select(v => v.FileName).ToList()
+            })
+            .ToList();
             searchViewModel.ResultCount = searchViewModel.Movies.Count();
 
             return View(searchViewModel);

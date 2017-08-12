@@ -1,10 +1,10 @@
-﻿using System;
-using System.Configuration;
-using System.Data.Entity;
-using CrossCutting.Core.IOC;
+﻿using CrossCutting.Core.IOC;
 using CrossCutting.Core.Logging;
 using CrossCutting.MainModule.Logging;
 using Microsoft.Practices.Unity;
+using System;
+using System.Configuration;
+using System.Data.Entity;
 using UMovies.Application;
 using UMovies.Data;
 
@@ -14,9 +14,12 @@ namespace CrossCutting.MainModule.IOC
     {
         private static UnityContainer _unityContainer;
 
-        public IocUnityContainer()
+        public IocUnityContainer() : this(new UnityContainer())
+        { }
+
+        public IocUnityContainer(UnityContainer container)
         {
-            _unityContainer = new UnityContainer();
+            _unityContainer = container;
             RegisterTypes();
         }
 

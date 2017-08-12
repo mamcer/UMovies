@@ -13,6 +13,7 @@ namespace UMovies.Web
             ViewEngines.Engines.Add(new RazorViewEngine());
 
             AreaRegistration.RegisterAllAreas();
+            UnityConfig.RegisterComponents();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

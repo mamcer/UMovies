@@ -1,16 +1,25 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using UMovies.Data;
+using CrossCutting.Core.Logging;
+using UMovies.Application;
 using UMovies.Web.Models;
 
 namespace UMovies.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ILogService _logService;
+        private readonly IMovieService _movieService;
+
+        public HomeController(ILogService logService, IMovieService movieService)
+        {
+            _logService = logService;
+            _movieService = movieService;
+        }
+
         public ActionResult Index()
         {
-            var entities = new UMoviesEntities();
-            var movies = entities.Movies
+            var movies = _movieService.GetAll()
                 .Select(m => new MovieViewModel
                 {
                     Id = m.Id,
@@ -25,19 +34,26 @@ namespace UMovies.Web.Controllers
 
         public ActionResult Show(int id)
         {
-            var entities = new UMoviesEntities();
-            var movie = entities.Movies.Where(m => m.Id == id).Select(m => new MovieViewModel
-            {
-                Id = m.Id,
-                Name = m.Name,
-                Sinopsis = m.Sinopsis,
-                Year = m.Year,
-                MovieFiles = m.MovieFiles.Select(v => v.FileName).ToList(),
-                MovieFolder = m.MovieFolder,
-                ThumbnailFile = m.ThumbnailFileName
-            }).FirstOrDefault();
+            var movie = _movieService.GetById(id);
 
-            return View(movie);
+            if (movie != null)
+            {
+                var movieViewModel = new MovieViewModel
+                {
+                    Id = movie.Id,
+                    Name = movie.Name,
+                    Sinopsis = movie.Sinopsis,
+                    Year = movie.Year,
+                    MovieFiles = movie.MovieFiles.Select(v => v.FileName).ToList(),
+                    MovieFolder = movie.MovieFolder,
+                    ThumbnailFile = movie.ThumbnailFileName
+                };
+
+                return View(movieViewModel);
+            }
+
+            _logService.Warn($"Movie with if {id} not found.");
+            return RedirectToAction("Index");
         }
     }
 }
