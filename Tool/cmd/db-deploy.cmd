@@ -4,7 +4,7 @@ SETLOCAL
 @REM  ----------------------------------------------------------------------------
 @REM  db-deploy.cmd
 @REM
-@REM  author: mario.moreno@live.com
+@REM  author: m4mc3r@gmail.com
 @REM
 @REM  ----------------------------------------------------------------------------
 
