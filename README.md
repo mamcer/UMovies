@@ -17,9 +17,9 @@ Also it uses Autohotkey to automate mphc functions like play/pause, skip back, s
 
 And last but not least, Input simulator to programatically emulate a key press.
 
-[https://mpc-hc.org/]()
-[https://github.com/michaelnoonan/inputsimulator]()
-[https://autohotkey.com/]()
+[https://mpc-hc.org/]()  
+[https://github.com/michaelnoonan/inputsimulator]()  
+[https://autohotkey.com/]()  
 
 ## Technologies 
 
