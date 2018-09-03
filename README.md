@@ -1,5 +1,7 @@
 # UMovies
 
+> More details about why I published this project in [this blog post](https://mamcer.github.io/2018-09-02-i-cleaned-up-my-virtual-basement/)
+
 ## Description
 
 UMovies is a collection of applications to remotely play and control media files. The main scenario is to show a list of available media files, play them in a media center and control remotely and in realtime. It support commands like Play/Pause, Skip back and forward, play from the beginning and Close player.
